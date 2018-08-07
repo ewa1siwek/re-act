@@ -17,28 +17,28 @@
 <body>
 <div id="app"></div>
 <script type="text/babel">
-    function FirstComponent() {
+    function FirstComponent({title, content}) {
         return (
-            <h1 className="appstyle" >Pierwszy komponent</h1>
+            <div>
+                <dialog open>
+                    <h1>{title}</h1>
+                    <p>{content}</p>
+                </dialog>
+            </div>
         )
     }
 
-    function SecondComponent() {
-        return (
-            <h1 className="appstyle" >Drugi komponent</h1>
-        )
-    }
+
 
     ReactDOM.render(
         (
-        <React.Fragment>
-            <FirstComponent />
-            <SecondComponent />
-        </React.Fragment>
+        <FirstComponent
+            title="Tytuł"
+            content="To jest treść"/>
     ),
     document.getElementById('app')
     )
-    
+
 </script>
 </body>
 
