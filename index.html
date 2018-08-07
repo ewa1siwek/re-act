@@ -8,14 +8,37 @@
     <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone/babel.js"></script>
 </head>
-
+<style>
+    .appstyle {
+        display: flow;
+        float: left;
+    }
+</style>
 <body>
 <div id="app"></div>
 <script type="text/babel">
+    function FirstComponent() {
+        return (
+            <h1 className="appstyle" >Pierwszy komponent</h1>
+        )
+    }
+
+    function SecondComponent() {
+        return (
+            <h1 className="appstyle" >Drugi komponent</h1>
+        )
+    }
+
     ReactDOM.render(
-        <h1>Witaj, świecie!</h1>,
-        document.getElementById('app')
-    );
+        (
+        <React.Fragment>
+            <FirstComponent />
+            <SecondComponent />
+        </React.Fragment>
+    ),
+    document.getElementById('app')
+    )
+    
 </script>
 </body>
 
