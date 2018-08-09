@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
 </head>
 <style>
+    .box  {
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+    }
 
 </style>
 <body>
@@ -41,6 +46,7 @@
     class ContactList extends React.Component {
         render () {
             return (
+                <React.Fragment>
                 <ul className="ui relaxed divided list selection">
                     <ContactItem
                         login="typeofweb1"
@@ -58,6 +64,9 @@
                         department="QA"
                     />
                 </ul>
+                <EventApp />
+                    <DragEvent />
+                    </React.Fragment>
             )
         }
     }
@@ -66,6 +75,7 @@
         render () {
             const { login, name, department } = this.props;
             return (
+
                 <li className="item">
                     <UserAvatar login = {login} />
                     <div className="content">
@@ -89,6 +99,18 @@
             return (
                 <img src={avt} className="ui mini rounded image" />
             )
+        }
+    }
+
+    class EventApp extends React.Component {
+        render() {
+            return (
+            <div>
+            <button onClick={this.onClickHandler}>Kliknij!</button>
+            </div>
+            )}
+        onClickHandler() {
+            alert("Kliknięto!");
         }
     }
 
