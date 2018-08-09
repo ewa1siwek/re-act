@@ -7,37 +7,82 @@
     <script src="https://unpkg.com/react/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone/babel.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
 </head>
 <style>
-    .appstyle {
-        display: flow;
-        float: left;
-    }
+
 </style>
 <body>
 <div id="app"></div>
+
 <script type="text/babel">
-    function FirstComponent({title, content}) {
+
+    function AppHeader() {
         return (
-            <div>
-                <dialog open>
-                    <h1>{title}</h1>
-                    <p>{content}</p>
-                </dialog>
-            </div>
+            <header className="ui menu">
+                <nav className="ui container">
+                    <a href="#" className="header item">
+                        <img
+                            className="logo"
+                            src="https://typeofweb.com/wp-content/uploads/2017/08/cropped-typeofweb_logo-04-white-smaller-1-e1504359870362.png"
+                        />
+                        Lista kontaktów
+                    </a>
+                    <div className="header item">
+                        <button className="ui button">Dodaj</button>
+                    </div>
+                </nav>
+            </header>
         )
     }
 
+    function ContactList() {
+        return (
+                <ul className="ui relaxed divided list selection">
+                    <ContactItem
+                    login="typeofweb1"
+                    name="Lena"
+                    department="Javascript Developer"
+                    />
+                    <ContactItem
+                    login="typeofweb2"
+                    name="Brian"
+                    department="Human Resources"
+                    />
+                    <ContactItem
+                    login="typeofweb3"
+                    name="Rick"
+                    department="QA"
+                    />
+                </ul>
+        )
+    }
 
+    function ContactItem({ login, name, department}) {
+        const imgUrl = `https://api.adorable.io/avatars/55/${login}.png`
+        return (
+            <li className="item">
+                <img src={imgUrl} className="ui mini rounded image" />
+                <div className="content">
+                    <h4 className="header">{name}</h4>
+                    <div className="description">{department}</div>
+                </div>
+            </li>
+        )
+    }
 
-    ReactDOM.render(
-        (
-        <FirstComponent
-            title="Tytuł"
-            content="To jest treść"/>
-    ),
-    document.getElementById('app')
-    )
+    function App() {
+        return (
+            <div>
+                <AppHeader />
+                <main className="ui main text container">
+                    <ContactList />
+                </main>
+            </div>
+        );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('app'))
 
 </script>
 </body>
